@@ -11,9 +11,10 @@ import useGeneres, { Genre } from "../hooks/useGeneres";
 import getOptimizedImage from "../services/image-url";
 
 interface Props {
-  selectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
+  setSelectedGenre: (genre: Genre) => void;
 }
-const GeneresList = ({ selectGenre }: Props) => {
+const GeneresList = ({ selectedGenre, setSelectedGenre }: Props) => {
   const { data, error, isLoading } = useGeneres();
   if (isLoading) return <Spinner />;
   if (error) return null;
@@ -28,12 +29,10 @@ const GeneresList = ({ selectGenre }: Props) => {
               borderRadius="5px"
             />
             <Button
+              fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
               variant="link"
               fontSize="lg"
-              onClick={() => {
-                console.log(genre);
-                selectGenre(genre);
-              }}
+              onClick={() => setSelectedGenre(genre)}
             >
               {genre.name}
             </Button>
