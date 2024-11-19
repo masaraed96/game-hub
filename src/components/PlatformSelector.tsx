@@ -7,7 +7,12 @@ interface Platform {
   name: string;
   slug: string;
 }
-const PlatformSelector = () => {
+
+interface Props {
+  setSelectedPlatform: (platform: Platform) => void;
+  selectedPlatform: Platform | null;
+}
+const PlatformSelector = ({ setSelectedPlatform, selectedPlatform }: Props) => {
   const { data, error, isLoading } = useData<Platform>(
     "/platforms/lists/parents"
   );
@@ -15,11 +20,16 @@ const PlatformSelector = () => {
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        Platforms
+        {selectedPlatform ? selectedPlatform.name : "Platforms"}
       </MenuButton>
       <MenuList>
         {data.map((platform) => (
-          <MenuItem key={platform.id}>{platform.name}</MenuItem>
+          <MenuItem
+            key={platform.id}
+            onClick={() => setSelectedPlatform(platform)}
+          >
+            {platform.name}
+          </MenuItem>
         ))}
       </MenuList>
     </Menu>
