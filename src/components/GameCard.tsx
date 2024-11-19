@@ -9,9 +9,9 @@ interface Props {
 }
 const GameCard = ({ game }: Props) => {
   return (
-    <Card borderRadius={10} overflow="hidden" margin={5}>
-      <Image src={getOptimizedImage(game.background_image)} />
-      <CardBody>
+    <Card>
+      <Image height="300px" src={getOptimizedImage(game.background_image)} />
+      <CardBody height="70px">
         <Heading fontSize="2xl">{game.name}</Heading>
         <HStack justifyContent="space-between">
           <PlatformListIcons
