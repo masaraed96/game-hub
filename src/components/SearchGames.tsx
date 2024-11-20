@@ -2,14 +2,17 @@ import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 
-const SearchGames = () => {
+interface Props {
+  onSearch: (searchText: string) => void;
+}
+const SearchGames = ({ onSearch }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        console.log(ref.current?.value);
+        if (ref.current) onSearch(ref.current.value);
       }}
       style={{ width: "100%" }}
     >
