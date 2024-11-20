@@ -8,7 +8,7 @@ import { AxiosRequestConfig, CanceledError } from "axios";
     count: number;
   }
 
-const useGames = <T>(endpoint: string, params?: AxiosRequestConfig, dependecies?: any[])=>{
+const useData = <T>(endpoint: string, params?: AxiosRequestConfig, dependecies?: any[])=>{
     const [data, setData] = useState<T[]>([]);
     const [error, setError] = useState("");
     const [isLoading, setLoading] = useState(false);
@@ -31,4 +31,4 @@ const useGames = <T>(endpoint: string, params?: AxiosRequestConfig, dependecies?
     return {data, error, isLoading};
 }
 
-export default useGames;
+export default useData;
