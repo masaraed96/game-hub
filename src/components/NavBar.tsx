@@ -1,7 +1,7 @@
 import { HStack, Image } from "@chakra-ui/react";
 import logo from "../assets/logo.webp";
 import ColorModeSwitch from "./ColorModeSwitch";
-import SearchGames from "./searchGames";
+import SearchGames from "./SearchGames";
 
 interface Props {
   onSearch: (searchText: string) => void;
